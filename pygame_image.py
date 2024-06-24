@@ -27,18 +27,20 @@ def main():
         screen.blit(bg_img2, [-x+4800, 0]) 
 
         key_lst = pg.key.get_pressed()  # 全キーの押下状態を取得
+        mv = [-1, 0]
         if key_lst[pg.K_UP]:  # 上矢印キーが押されたら
-            kk_rct.move_ip(0, -1)
+            mv [1] -= 1
         if key_lst[pg.K_DOWN]:  # 下矢印キーが押されたら
-            kk_rct.move_ip(0, +1)
+            mv[1] += 1
         if key_lst[pg.K_LEFT]:  # 左矢印キーが押されたら
-            kk_rct.move_ip(-1, 0)
+            mv[0] -= 1
         if key_lst[pg.K_RIGHT]:  # 右矢印キーが押されたら
-            kk_rct.move_ip(+1, 0)
+            mv[0] += 2
+        kk_rct.move_in(mv)
         screen.bilt(kk_img,kk_rct)
         pg.display.update()
         tmr += 1        
-        clock.tick(10)
+        clock.tick(200)
 
 
 if __name__ == "__main__":
